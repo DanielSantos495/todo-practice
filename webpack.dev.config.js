@@ -23,6 +23,10 @@ module.exports = {
         test: /\.css|.scss$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.ttf/, //Modulo nativo de Webpack
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
