@@ -24,8 +24,12 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.ttf/, //Modulo nativo de Webpack
+        //Modulo nativo de Webpack
+        test: /\.ttf/,
         type: 'asset/resource',
+        generator: {
+          filename: './assets/fonts/[name][ext]',
+        },
       },
     ],
   },
