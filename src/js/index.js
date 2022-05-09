@@ -1,3 +1,1 @@
-const hello = 'Hello'
-
-console.log(hello)
+import '@utils/consoleName.js'
