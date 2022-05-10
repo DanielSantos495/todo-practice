@@ -1,3 +1,36 @@
 /*!**************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/index.scss ***!
-  \**************************************************************************************************************/@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(assets/fonts/Roboto-Regular.ttf) format("truetype")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(assets/fonts/Roboto-Medium.ttf) format("truetype")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:700;src:url(assets/fonts/Roboto-Bold.ttf) format("truetype")}html body{background:grey;font-weight:700}html a,html body{font-family:Roboto}html a{font-weight:500}
+  \**************************************************************************************************************/
+@font-face {
+  font-family: "Roboto";
+  src: url(./assets/fonts/Roboto-Regular.ttf) format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(./assets/fonts/Roboto-Medium.ttf) format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(./assets/fonts/Roboto-Bold.ttf) format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+html h1 {
+  text-transform: uppercase;
+}
+html body {
+  background: grey;
+  font-family: Roboto;
+  font-weight: 700;
+}
+html a {
+  font-family: Roboto;
+  font-weight: 500;
+}
