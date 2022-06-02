@@ -1,1 +1,2 @@
-import '@utils/consoleName.js'
+import '@components/AddItem'
+import '@components/RenderItems'
