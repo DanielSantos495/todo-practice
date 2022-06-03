@@ -10,7 +10,7 @@ export class RenderItems extends HTMLElement {
   /**
    * Observe node inserted in RenderItems component.
    * Filter Element (Node)
-   * Init event calling @see initItemsTodo
+   * Init event calling @see initEventsItemToDo
    * @param {Object} mutationList - They are properties mutations
    */
   _cbMutationObserver(mutationList) {
@@ -23,7 +23,7 @@ export class RenderItems extends HTMLElement {
           'itemToDo'
         )
 
-        if (elementAdded) this.initItemToDo(elementAdded)
+        if (elementAdded) this.initEventsItemToDo(elementAdded)
       }
     }
   }
@@ -43,9 +43,10 @@ export class RenderItems extends HTMLElement {
   }
 
   /**
-   * Initial event change to each item
+   * Initial event change to each item added
+   * @param {Node} item - Node of item added
    */
-  initItemToDo(item) {
+  initEventsItemToDo(item) {
     if (item) {
       item.addEventListener('change', this._onChange.bind(this))
     }
@@ -53,7 +54,7 @@ export class RenderItems extends HTMLElement {
 
   /**
    * Callback initItemToDo
-   * @see initItemToDo
+   * @see initEventsItemToDo
    * @see changeState
    */
   _onChange(e) {
