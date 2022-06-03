@@ -1,7 +1,10 @@
+import { Number } from '../../utils/number'
+
 class ItemToDo {
   constructor(props) {
     const { state = true, task } = props
 
+    this.id = Number.randomNumber()
     this.state = state
     this.date = new Date()
     this.task = task
@@ -16,11 +19,28 @@ class ItemToDo {
    * }} - Data component
    * @returns {NodeString} - Return element HTML as a string
    */
-  static itemComponentHTML = ({ state, date, task }) => `
-    <span data-date="${date}" data-state="${state}">
-      ${task}
-    </span>
-  `
+  static itemComponentHTML = ({ id, state, date, task }) => {
+    return `
+      <span
+        class="itemToDo js-item-todo"
+        id="item-todo-${this.id}"
+        data-date="${date}"
+        data-state="${state}"
+      >
+        <label>
+          <input
+            type="checkbox"
+            name="state"
+            value="${state}"
+          />
+
+          <span>
+            ${task}
+          </span>
+        </label>
+      </span>
+    `
+  }
 }
 
 export { ItemToDo }

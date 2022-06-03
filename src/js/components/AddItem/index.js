@@ -42,6 +42,7 @@ class AddItem extends HTMLElement {
 
   /**
    * Send new item
+   * Initial Items addeds
    * @param {Object} e - Event object
    */
   _onSubmit(e) {
