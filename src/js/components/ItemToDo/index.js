@@ -19,7 +19,7 @@ class ItemToDo {
    * }} - Data component
    * @returns {NodeString} - Return element HTML as a string
    */
-  static itemComponentHTML = ({ id, state, date, task }) => {
+  static itemComponentHTML = ({ state, date, task }) => {
     return `
       <span
         class="itemToDo js-item-todo"

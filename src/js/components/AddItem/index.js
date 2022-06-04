@@ -49,6 +49,10 @@ class AddItem extends HTMLElement {
     e.preventDefault()
 
     if (this.itemContent.task.length > this.limitMin) {
+      /**
+       * Here go to send API and render item - For now only render item
+       */
+
       this.renderItem(ItemToDo.itemComponentHTML(this.itemContent))
     }
   }

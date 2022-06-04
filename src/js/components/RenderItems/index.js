@@ -1,10 +1,29 @@
 import { Filter } from '../../utils/filter'
+import { Storage } from '../../utils/storage'
 
 export class RenderItems extends HTMLElement {
   constructor() {
     super()
-
+    this.storage = new Storage()
     this.itemToDoObserver()
+    this.append(...this.checkCustomCache())
+  }
+
+  /**
+   * Check local storage if there are items saved
+   * Section API is a prototpy
+   * @returns {Array} - Array of items node
+   */
+  checkCustomCache() {
+    const API = false
+    if (API) {
+    } else if (this.storage.localGet('lastItemsSaved')) {
+      return [
+        ...new DOMParser()
+          .parseFromString(this.storage.localGet('lastItemsSaved'), 'text/html')
+          .querySelectorAll('span'),
+      ]
+    }
   }
 
   /**
@@ -23,20 +42,23 @@ export class RenderItems extends HTMLElement {
           'itemToDo'
         )
 
-        if (elementAdded) this.initEventsItemToDo(elementAdded)
+        if (elementAdded) {
+          this.initEventsItemToDo(elementAdded)
+          this.saveItemsAdded(mutation.target.parentNode.innerHTML)
+        }
       }
     }
   }
 
   /**
-   * Util observe render items child (PDTE DOCUMENTATION)
+   * Observe item added to the DOM in the element parent : this (render-items)
+   * Use MutationObserve
+   * Callback @see _cbMutationObserver
    */
   itemToDoObserver() {
     const options = {
       childList: true,
-      subtree: true,
     }
-
     const observer = new MutationObserver(this._cbMutationObserver.bind(this))
 
     observer.observe(this, options)
@@ -48,26 +70,39 @@ export class RenderItems extends HTMLElement {
    */
   initEventsItemToDo(item) {
     if (item) {
-      item.addEventListener('change', this._onChange.bind(this))
+      item.addEventListener('change', this._onChange.bind(this, item))
     }
   }
 
   /**
    * Callback initItemToDo
+   * @param {Object} e - Change event object
    * @see initEventsItemToDo
-   * @see changeState
    */
-  _onChange(e) {
-    this.changeState(e)
+  _onChange(item, e) {
+    this.changeState(item, e)
   }
 
   /**
    * Change state to the Item ToDo with the Frontend
-   * @param {Object} e - Object event
+   * @param {Object} e - Change event object
+   * @see initEventsItemToDo
    */
-  changeState(e) {
+  changeState(item, e) {
     e.target.value = e.target.checked
-    console.log(e.target.value)
+    item.dataset.state = e.target.value
+
+    /**
+     * Here go to send API or not - (Perhaps when close browser window) - For now only change state
+     */
+  }
+
+  /**
+   * Last items created are saved in localStorage
+   * @param {Object} payload - Item created
+   */
+  saveItemsAdded(payload) {
+    this.storage.localSet('lastItemsSaved', payload)
   }
 }
 
