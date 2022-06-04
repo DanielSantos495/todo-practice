@@ -11,6 +11,7 @@ export class RenderItems extends HTMLElement {
 
   /**
    * Check local storage if there are items saved
+   * Receive items as a string, use DOMParse to get HTML and filter elements from the HTML
    * Section API is a prototpy
    * @returns {Array} - Array of items node
    */
@@ -21,7 +22,7 @@ export class RenderItems extends HTMLElement {
       return [
         ...new DOMParser()
           .parseFromString(this.storage.localGet('lastItemsSaved'), 'text/html')
-          .querySelectorAll('span'),
+          .querySelectorAll('.itemToDo'),
       ]
     }
   }
@@ -44,7 +45,7 @@ export class RenderItems extends HTMLElement {
 
         if (elementAdded) {
           this.initEventsItemToDo(elementAdded)
-          this.saveItemsAdded(mutation.target.parentNode.innerHTML)
+          this.saveItemsAdded(mutation.target.innerHTML)
         }
       }
     }

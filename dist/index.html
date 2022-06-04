@@ -8,25 +8,32 @@
     <title>ToDo</title>
   </head>
   <body>
-    <h1>Todo</h1>
-    <nav>
-      <a href="customer/account.html">Vamos account</a>
-    </nav>
+    <main id="main" arial-label="Main">
+      <h1>Todo</h1>
+      <nav>
+        <a href="customer/account.html">Vamos account</a>
+      </nav>
 
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Daniel Santos</a>.
-    </div>
+      <add-item aria-label="Add item To Do">
+        <form>
+          <input type="text" name="content" />
+        </form>
+      </add-item>
 
-    <add-item>
-      <form>
-        <input type="text" name="content" />
-      </form>
-    </add-item>
+      <render-items></render-items>
 
-    <render-items></render-items>
+      <add-item-footer>
+        <quantity-items data-text="items left"></quantity-items>
+
+        <filter-items>
+          <span>All</span>
+          <span">Active</span>
+          <span>Completed</span>
+        </filter-items>
+
+        <clean-items>Clear completed</clean-items>
+      </add-item-footer>
+    </main>
 
     <script src="main.js"></script>
   </body>
