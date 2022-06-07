@@ -10,7 +10,7 @@ class QuantityItems extends HTMLElement {
   quantityItemsRendered() {
     this.textContent = `${
       document.querySelector('render-items').childElementCount
-    } ${this.dataset.text}`
+    } ${this.text}`
   }
 }
 
